@@ -48,7 +48,9 @@ h3 {
 header {
   padding: 1rem 0 1rem 0;
   height: 5rem;
-
+  position: fixed;
+  left: 0;
+  right: 0;
   background-color: #301a1a;
 }
 
