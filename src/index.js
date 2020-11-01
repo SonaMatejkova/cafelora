@@ -48,7 +48,7 @@ const layers = [
 
 show(layers);*/
 
-const drinks = {
+/*const drinks = {
   id: 'romano',
   name: 'Romano',
   ordered: false,
@@ -62,7 +62,8 @@ const drinks = {
       label: 'espresso',
     },
   ],
-};
+};*/
+
 const Drink = (props) => {
   const drink = document.createElement('div');
   drink.className = 'drink';
@@ -79,19 +80,58 @@ const Drink = (props) => {
               <button class="order-btn">Objednat</button>
             </div>`;
   const orderBtn = drink.querySelector('.order-btn');
-  orderBtn.addEventListener('click', () => {
-    let ordered = props.ordered;
-    document
-      .querySelector('.drink__cup')
-      .classList.toggle('drink__cup--selected');
-    if (ordered === false) {
+  orderBtn.addEventListener('click', (event) => {
+    drink.querySelector('.drink__cup').classList.toggle('drink__cup--selected');
+    if (props.ordered === false) {
       orderBtn.textContent = 'Zrušit';
-      ordered = true;
+      props.ordered = true;
     } else {
       orderBtn.textContent = 'Objednat';
-      ordered = false;
+      props.ordered = false;
     }
   });
+  return drink;
 };
+
+const drinks = [
+  {
+    id: 'cappuccino',
+    name: 'Cappuccino',
+    ordered: false,
+    layers: [
+      {
+        color: '#feeeca',
+        label: 'mléčná pěna',
+      },
+      {
+        color: '#fed7b0',
+        label: 'teplé mléko',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+  {
+    id: 'romano',
+    name: 'Romano',
+    ordered: false,
+    layers: [
+      {
+        color: '#fbdf5b',
+        label: 'citrón',
+      },
+      {
+        color: '#613916',
+        label: 'espresso',
+      },
+    ],
+  },
+];
+
 const drinksList = document.querySelector('.drinks-list');
-drinksList.appendChild = Drink(drinks);
+
+for (let i = 0; i < drinks.length; i++) {
+  drinksList.appendChild(Drink(drinks[i]));
+}
