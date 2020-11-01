@@ -1,9 +1,11 @@
 .drink {
   padding: 2rem;
+  width: 400px;
 }
 
 .drink__product {
   display: flex;
+  justify-content: center;
 }
 
 .drink__cup {

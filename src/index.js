@@ -5,12 +5,14 @@ import './style.css';
 console.log('funguju!');
 
 const navBtn = document.querySelector('#nav-btn');
+
 navBtn.addEventListener('click', () => {
   const nav = document.querySelector('nav');
   nav.classList.toggle('nav-closed');
 });
 
-const odkaz = document.querySelectorAll('a');
+const odkaz = document.querySelectorAll('.odkaz');
+
 for (let i = 0; i < odkaz.length; i++) {
   odkaz[i].addEventListener('click', () => {
     const nav = document.querySelector('nav');
@@ -18,84 +20,16 @@ for (let i = 0; i < odkaz.length; i++) {
   });
 }
 
-/*
-const drinkInfo = document.querySelector('.drink__info');
-const show = (list) => {
-  drinkInfo.innerHTML = `<h3>Cappuccino</h3> ${LayerList({ items: list })}`;
-};
-
-const layers = [
-  {
-    color: '#feeeca',
-    label: 'mléčná pěna',
-  },
-  {
-    color: '#fed7b0',
-    label: 'teplé mléko',
-  },
-  {
-    color: '#613916',
-    label: 'espresso',
-  },
-];
-
-show(layers);*/
-
-/*const drinks = {
-  id: 'romano',
-  name: 'Romano',
-  ordered: false,
-  layers: [
-    {
-      color: '#fbdf5b',
-      label: 'citrón',
-    },
-    {
-      color: '#613916',
-      label: 'espresso',
-    },
-  ],
-};*/
-
-const drinks = [
-  {
-    id: 'cappuccino',
-    name: 'Cappuccino',
-    ordered: false,
-    layers: [
-      {
-        color: '#feeeca',
-        label: 'mléčná pěna',
-      },
-      {
-        color: '#fed7b0',
-        label: 'teplé mléko',
-      },
-      {
-        color: '#613916',
-        label: 'espresso',
-      },
-    ],
-  },
-  {
-    id: 'romano',
-    name: 'Romano',
-    ordered: false,
-    layers: [
-      {
-        color: '#fbdf5b',
-        label: 'citrón',
-      },
-      {
-        color: '#613916',
-        label: 'espresso',
-      },
-    ],
-  },
-];
-
 const drinksList = document.querySelector('.drinks-list');
 
-for (let i = 0; i < drinks.length; i++) {
-  drinksList.appendChild(Drink(drinks[i]));
-}
+const nacti = () => {
+  fetch('http://cafelora.kodim.cz/api/drinks')
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        drinksList.appendChild(Drink(data[i]));
+      }
+    });
+};
+
+nacti();
