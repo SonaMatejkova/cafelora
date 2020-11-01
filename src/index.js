@@ -1,3 +1,4 @@
+import { Layer } from './Layer';
 import './index.html';
 import './style.css';
 
@@ -31,3 +32,33 @@ orderBtn.addEventListener('click', () => {
     ordered = false;
   }
 });
+
+const LayerList = (props) => {
+  let layerList = '';
+  for (let i = 0; i < props.items.length; i++) {
+    layerList += Layer(props.items[i]);
+  }
+  return layerList;
+};
+
+const drinkInfo = document.querySelector('.drink__info');
+const show = (list) => {
+  drinkInfo.innerHTML = `<h3>Cappuccino</h3> ${LayerList({ items: list })}`;
+};
+
+const layers = [
+  {
+    color: '#feeeca',
+    label: 'mléčná pěna',
+  },
+  {
+    color: '#fed7b0',
+    label: 'teplé mléko',
+  },
+  {
+    color: '#613916',
+    label: 'espresso',
+  },
+];
+
+show(layers);
