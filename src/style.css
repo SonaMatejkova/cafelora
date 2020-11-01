@@ -232,11 +232,16 @@ nav a:hover {
 }
 
 .gallery {
-  padding-top: 0;
+  padding: 20px;
   height: 100vh;
-
+  text-align: center;
   color: white;
-  background-image: url('./img/gallery.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url('./img/gallery.jpg');
   background-size: cover;
   background-position: top center;
   background-attachment: fixed;
